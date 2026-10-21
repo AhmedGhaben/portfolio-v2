@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Ahmed Ghaben</title>
-<meta name="description" content="Ahmed Ghaben builds a point-of-sale platform for retailers in Angola and researches diverse solutions in combinatorial optimization at MIPT.">
+<meta name="description" content="Ahmed Ghaben builds a point-of-sale platform for shops and researches diverse solutions in combinatorial optimization at MIPT.">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#EEF1EC">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Cpath d=%27M4 8h24M4 16h24M4 24h24%27 stroke-width=%273.5%27 fill=%27none%27 stroke=%27%232B4FD0%27/%3E%3C/svg%3E">
@@ -130,6 +130,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
 .paper h3{margin:0 0 2px}
 .paper .topic{font-weight:500;margin:0 0 4px}
 .paper .who{color:var(--muted);font-size:15px;margin:0 0 10px}
+.paper .status{color:var(--muted);font-size:15px;margin:0}
 .paper p{max-width:62ch}
 .plinks{display:flex;flex-wrap:wrap;gap:6px;margin:0}
 .maxcut .keep{stroke:var(--rule);stroke-width:1.1}
@@ -175,7 +176,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
 .mc-sum{font-size:15px;margin:14px 0 0;max-width:72ch}
 
 
-/* elsewhere and contact */
+/* about and contact */
 .facts{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px 28px;margin:8px 0 0;max-width:780px}
 .facts dt{font-weight:650}
 .facts dd{margin:0;max-width:62ch}
@@ -218,7 +219,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
       <li><a href="#startup">Startup</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#elsewhere">Elsewhere</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ol>
   </nav>
@@ -227,7 +228,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
     <header class="hero" id="top">
       <div>
         <h1>Ahmed Ghaben</h1>
-        <p class="lede">I'm building a point-of-sale platform for retailers in Angola, and researching diverse solutions in combinatorial optimization at MIPT.</p>
+        <p class="lede">I'm building a point-of-sale platform for shops, and researching diverse solutions in combinatorial optimization at MIPT.</p>
         <ul class="links">
           <li><a href="mailto:ghabenahmed25@gmail.com">Email</a></li>
           <li><a href="https://github.com/AhmedGhaben">GitHub</a></li>
@@ -251,11 +252,11 @@ figcaption{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
     </header>
 
     <section id="startup" aria-labelledby="startup-h">
-      <h2 id="startup-h">A point-of-sale system for shops in Angola</h2>
-      <p class="role">Founder. I designed and built every feature. In development, not yet launched.</p>
+      <h2 id="startup-h">A point-of-sale system for shops</h2>
+      <p class="role">Founder. I designed and built every feature.</p>
 
       <div class="prose">
-        <p>A shop with several branches needs every till to keep selling when the internet drops, and every receipt it prints to be a valid tax document. In Angola that means the tax authority's (AGT) rules: invoice-receipts numbered without gaps, each signed and chained to the one before it, and SAF-T files for the authority every month.</p>
+        <p>A cloud platform that runs a shop, whether it has one store or several. Cashiers sell from a till app that keeps working when the internet drops. Owners and managers use a back office in the browser to manage products and stock across stores, buy from suppliers, handle returns, run shifts and staff, and see how each store is doing.</p>
       </div>
 
       <h3>What it covers</h3>
@@ -264,7 +265,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
         <div><dt>Stock</dt><dd>Per-store inventory, transfers between stores, low-stock alerts, valued at weighted average cost.</dd></div>
         <div><dt>Purchasing and returns</dt><dd>Supplier invoices and payments, refunds issued as credit notes against the original sale.</dd></div>
         <div><dt>Shifts and cash</dt><dd>Opening float, blind cash count at close, flagged differences, end-of-shift report.</dd></div>
-        <div><dt>Tax and accounting</dt><dd>SAF-T (AO) files, an export for the accountant, double-entry books posted from sales and purchases.</dd></div>
+        <div><dt>Tax and accounting</dt><dd>Tax files for the authorities, an export for the accountant, double-entry books posted from sales and purchases.</dd></div>
         <div><dt>Staff</dt><dd>Roles and per-person permissions, PIN sign-in on the till, an audit log of every change.</dd></div>
       </dl>
 
@@ -290,16 +291,16 @@ figcaption{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
         </div>
         <div class="node">
           <b>Tax and accountant</b><span class="kind">Files and e-invoicing</span>
-          <ul><li>SAF-T (AO) XML, checked against AGT's schema in tests</li><li>Excel workbook for the accountant</li><li>Queue for AGT e-invoicing</li></ul>
+          <ul><li>SAF-T tax files, checked against the official schema in tests</li><li>Excel workbook for the accountant</li><li>Queue for electronic invoicing</li></ul>
         </div>
       </div>
       <p class="under">The back office (dashboard, reports, products, settings) is a React app that talks to the same server from any browser.</p>
 
-      <h3>The hard decision: sign on the till, not the server</h3>
+      <h3>Selling while offline</h3>
       <div class="decision">
-        <p>Each invoice must carry a signature over its date, number, total and the previous invoice's signature. If only the server could sign, a till that lost its connection could not issue a valid receipt, and the shop would stop selling.</p>
-        <p>So each registered till keeps its own numbered series and signs every document as it issues it, online or off. The signing key reaches a till only when the owner registers it with a single-use code. Windows keeps it encrypted, the web page never sees it, and it is deleted when the till's access is withdrawn.</p>
-        <p>The cost is that the server is no longer the only place numbers come from. When a till uploads, the server checks the whole chain again and shows managers any break: a signature that doesn't match, a missing or reordered number, an unknown key. A plain browser has no key, so in Angola it can only sell online.</p>
+        <p>Every invoice has to be numbered and signed, and each signature includes the one before it. If only the server could do that, a till would stop selling the moment the internet dropped.</p>
+        <p>I solved this by letting each till issue invoices on its own. It keeps its own numbered series, signs each sale as it happens, queues it, and uploads it when the connection returns. The server then checks the whole chain and flags anything that doesn't fit, such as a missing number or a bad signature, so a sale made offline is as trustworthy as one made online.</p>
+        <p>The signing key reaches a till only when the owner registers it with a single-use code. Windows keeps the key encrypted, and it is deleted if the till's access is withdrawn.</p>
       </div>
 
       <h3>Screens</h3>
@@ -311,7 +312,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
           <button role="tab" aria-selected="false" aria-controls="shot-3" id="tab-3" tabindex="-1">Closing the till</button>
         </div>
         <figure class="wide">
-          <img src="media/pos-dashboard.webp" width="1400" height="641" loading="lazy" decoding="async" alt="Back-office dashboard: revenue, profit, orders and average order value in kwanzas, a revenue trend chart, top products, and reminders for monthly SAF-T files.">
+          <img src="media/pos-dashboard.webp" width="1400" height="641" loading="lazy" decoding="async" alt="Back-office dashboard: revenue, profit, orders and average order value, a revenue trend chart, top products, and reminders for monthly SAF-T files.">
           <figcaption>Owner's dashboard, with reminders for the month's tax files.</figcaption>
         </figure>
         <figure>
@@ -330,7 +331,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
       <p class="under" style="margin-top:12px">All screens show a demo store with generated data.</p>
 
       <h3>Traction</h3>
-      <p class="prose"><span class="todo">[TRACTION: add once launched]</span></p>
+      <p class="prose">Not yet launched.</p>
 
       <div class="meta-row">
         <span>TypeScript, React, NestJS, PostgreSQL, Prisma, Electron</span>
@@ -344,28 +345,26 @@ figcaption{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
       <p class="role">Supervised by Danil Sagunov at MIPT. Both projects started at LIPS 2026, MIPT's summer research programme, and were presented at its conference.</p>
       <div class="prose">
         <p>An optimization problem usually asks for one best solution. Its diverse version asks for several good solutions that differ from each other as much as possible, so the person choosing among them has real alternatives.</p>
-        <p>For spanning trees, the distance between two trees <span class="math">T</span><sub>i</sub> and <span class="math">T</span><sub>j</sub> is the number of edges in one but not the other. The task is to find <span class="math">k</span> spanning trees of a graph whose smallest pairwise distance is as large as possible. The demo at the top does this for <span class="math">k</span> = 3 with a simple local search: a greedy start, then edge swaps, then restarts. On 365 small graphs it matched the optimum found by exhaustive search. On larger graphs it comes with no guarantee, and it is not the method from the paper.</p>
+        <p>For spanning trees, the distance between two trees <span class="math">T</span><sub>i</sub> and <span class="math">T</span><sub>j</sub> is the number of edges in one but not the other. The task is to find <span class="math">k</span> spanning trees of a graph whose smallest pairwise distance is as large as possible. The demo at the top does this for <span class="math">k</span> = 3 with a simple local search: a greedy start, then edge swaps, then restarts. On 365 small graphs it matched the optimum found by exhaustive search. On larger graphs it comes with no guarantee. It is not the method from the paper; the demo will switch to that method once the paper is published.</p>
       </div>
 
       <div class="papers">
         <article class="paper">
           <svg class="fig maxcut" viewBox="0 0 100 100" role="img" aria-label="Illustration: a small planar graph with its vertices split into two sides; the edges crossing between the sides form a maximum cut."><line class="keep" x1="20.8" y1="24.6" x2="20.4" y2="48.1"/><line class="cut" x1="17" y1="74.6" x2="20.4" y2="48.1"/><line class="cut" x1="49.7" y1="27.3" x2="20.8" y2="24.6"/><line class="cut" x1="79.7" y1="49.2" x2="80.8" y2="16.8"/><line class="cut" x1="49.7" y1="27.3" x2="80.8" y2="16.8"/><line class="cut" x1="17" y1="74.6" x2="51.3" y2="72.3"/><line class="cut" x1="49.7" y1="27.3" x2="20.4" y2="48.1"/><line class="cut" x1="79.7" y1="49.2" x2="51.3" y2="72.3"/><line class="keep" x1="79.7" y1="49.2" x2="49.7" y2="27.3"/><line class="keep" x1="20.4" y1="48.1" x2="51.3" y2="72.3"/><line class="cut" x1="49.7" y1="27.3" x2="51.3" y2="72.3"/><line class="cut" x1="20.8" y1="24.6" x2="17" y2="74.6"/><line class="keep" x1="20.8" y1="24.6" x2="80.8" y2="16.8"/><circle class="s1" cx="79.7" cy="49.2" r="3.6"/><circle class="s1" cx="49.7" cy="27.3" r="3.6"/><circle class="s0" cx="20.8" cy="24.6" r="3.6"/><circle class="s0" cx="80.8" cy="16.8" r="3.6"/><circle class="s1" cx="17" cy="74.6" r="3.6"/><circle class="s0" cx="20.4" cy="48.1" r="3.6"/><circle class="s0" cx="51.3" cy="72.3" r="3.6"/></svg>
           <div>
-            <h3><span class="todo">[PAPER TITLE]</span></h3>
-            <p class="topic">Diverse maximum cuts in planar graphs</p>
-            <p class="who">Co-lead. <span class="todo">[AUTHORS]</span> Manuscript in preparation.</p>
-            <p>The problem: find several maximum cuts of a graph that are as different from each other as possible. <span class="todo">[ONE-SENTENCE RESULT, after publication]</span></p>
-            <p class="plinks"><span class="todo">[PAPER LINK]</span> <span class="todo">[CODE]</span> <span class="todo">[BIBTEX]</span></p>
+            <h3>Diverse maximum cuts in planar graphs</h3>
+            <p class="who">Co-led with Mikhail Tyrin.</p>
+            <p>The problem: find several maximum cuts of a graph that are as different from each other as possible.</p>
+            <p class="status">Not published yet. Results and links will be added after publication.</p>
           </div>
         </article>
         <article class="paper">
           <div class="fig"><svg class="dst mini" viewBox="0 0 100 100" aria-hidden="true"><g class="base"><line data-e="0" x1="48.62" y1="15.01" x2="24.08" y2="10.44"/><line data-e="1" x1="87.04" y1="89.56" x2="49.95" y2="89.21"/><line data-e="2" x1="89.56" y1="12.72" x2="48.62" y2="15.01"/><line data-e="3" x1="10.44" y1="72.68" x2="49.95" y2="89.21"/><line data-e="4" x1="24.08" y1="10.44" x2="10.44" y2="72.68"/><line data-e="5" x1="48.62" y1="15.01" x2="49.95" y2="89.21"/><line data-e="6" x1="89.56" y1="12.72" x2="87.04" y2="89.56"/><line data-e="7" x1="48.62" y1="15.01" x2="10.44" y2="72.68"/><line data-e="8" x1="89.56" y1="12.72" x2="24.08" y2="10.44"/><line data-e="9" x1="87.04" y1="89.56" x2="48.62" y2="15.01"/></g><g class="tree t0"><line x1="48.62" y1="15.01" x2="24.08" y2="10.44"/><line x1="87.04" y1="90.13" x2="49.95" y2="89.79"/><line x1="48.62" y1="15.01" x2="49.95" y2="89.21"/><line x1="90.13" y1="12.74" x2="87.62" y2="89.58"/><line x1="49.1" y1="15.33" x2="10.92" y2="73"/></g><g class="tree t1"><line x1="87.05" y1="88.99" x2="49.96" y2="88.64"/><line x1="89.59" y1="13.3" x2="48.65" y2="15.59"/><line x1="48.14" y1="14.7" x2="9.96" y2="72.36"/><line x1="89.54" y1="13.3" x2="24.06" y2="11.01"/><line x1="87.04" y1="89.56" x2="48.62" y2="15.01"/></g><g class="tree t2"><line x1="89.53" y1="12.15" x2="48.59" y2="14.44"/><line x1="10.44" y1="72.68" x2="49.95" y2="89.21"/><line x1="24.08" y1="10.44" x2="10.44" y2="72.68"/><line x1="88.99" y1="12.7" x2="86.47" y2="89.54"/><line x1="89.58" y1="12.15" x2="24.1" y2="9.87"/></g><g class="nodes"><circle data-v="0" cx="89.56" cy="12.72" r="2"/><circle data-v="1" cx="87.04" cy="89.56" r="2"/><circle data-v="2" cx="48.62" cy="15.01" r="2"/><circle data-v="3" cx="24.08" cy="10.44" r="2"/><circle data-v="4" cx="10.44" cy="72.68" r="2"/><circle data-v="5" cx="49.95" cy="89.21" r="2"/></g></svg></div>
           <div>
-            <h3><span class="todo">[PAPER TITLE]</span></h3>
-            <p class="topic">Diverse matroid bases and spanning trees</p>
-            <p class="who">Team member. <span class="todo">[AUTHORS]</span> Manuscript in preparation.</p>
-            <p>The problem: find several bases of a matroid, spanning trees being the best-known case, that are pairwise as far apart as possible. <span class="todo">[ONE-SENTENCE RESULT, after publication]</span></p>
-            <p class="plinks"><span class="todo">[PAPER LINK]</span> <span class="todo">[CODE]</span> <span class="todo">[BIBTEX]</span></p>
+            <h3>Diverse matroid bases and spanning trees</h3>
+            <p class="who">Yan Drozhetsky, Ahmed Ghaben, Mikhail Kurs.</p>
+            <p>The problem: find several bases of a matroid, spanning trees being the best-known case, that are pairwise as far apart as possible.</p>
+            <p class="status">Not published yet. Results and links will be added after publication.</p>
           </div>
         </article>
       </div>
@@ -374,7 +373,7 @@ figcaption{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
 
     <section id="projects" aria-labelledby="projects-h">
       <h2 id="projects-h">Selected projects</h2>
-      <p class="role">Three things I've built besides the POS system. Everything else is on <a href="https://github.com/AhmedGhaben">GitHub</a>.</p>
+      <p class="role">Two more projects. Everything else is on <a href="https://github.com/AhmedGhaben">GitHub</a>.</p>
 
       <article class="proj">
         <h3>MyProfit: a finance assistant tied to a trading bot</h3>
@@ -410,22 +409,17 @@ figcaption{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.4}
       <article class="proj proj-split">
         <div>
           <h3>Bura card game</h3>
-          <p class="who">Solo, in development. Python, Pygame, pytest. <a href="https://github.com/AhmedGhaben/Bura">Source</a></p>
-          <p>Two-player Bura, a Russian trick-taking card game, played on one shared screen with a hand-over screen between turns. The rules engine is kept apart from the interface and covered by tests. Computer opponents are next.</p>
+          <p class="who">Solo. Python, Pygame, pytest. <a href="https://github.com/AhmedGhaben/Bura">Source</a></p>
+          <p>Bura, a Russian trick-taking card game, in Python. Play against a computer opponent at several difficulty levels, against an AI opponent, or against a friend on the same screen. The rules engine is kept apart from the interface and covered by tests.</p>
         </div>
         <img src="media/bura.webp" width="961" height="699" loading="lazy" decoding="async" alt="Bura game window: the trump card beside the stock, three face-down cards for player 2, and player 1's hand with Play and Claim 31 buttons.">
       </article>
 
-      <article class="proj">
-        <h3>The spanning-trees demo on this page</h3>
-        <p class="who">Solo, 2026. JavaScript, no dependencies. <a href="https://github.com/AhmedGhaben/portfolio-v2/tree/main/js">Source</a></p>
-        <p class="prose">The local search behind the graph at the top, and a test that checks it against exhaustive search over every triple of spanning trees on small graphs.</p>
-      </article>
     </section>
 
 
-    <section id="elsewhere" aria-labelledby="elsewhere-h">
-      <h2 id="elsewhere-h">Elsewhere</h2>
+    <section id="about" aria-labelledby="about-h">
+      <h2 id="about-h">About</h2>
       <dl class="facts">
         <dt>Study</dt>
         <dd>BSc in Applied Mathematics and Computer Science at MIPT, 2024 to 2028 (expected), in the English-taught programme. GPA 9.14 out of 10 (3.92 out of 4.0).</dd>
