@@ -78,7 +78,7 @@
     g.save(); g.translate(10, T + ph / 2); g.rotate(-Math.PI / 2); g.textBaseline = "middle"; g.fillText("Equity (× starting capital, log scale)", 0, 0); g.restore();
     // paths
     g.save(); g.beginPath(); g.rect(L, T, pw, ph); g.clip();
-    g.strokeStyle = ink; g.globalAlpha = matchMedia("(prefers-color-scheme: dark)").matches ? 0.02 : 0.03; g.lineWidth = 0.75;
+    g.strokeStyle = ink; g.globalAlpha = 0.03; g.lineWidth = 0.75;
     for (k = 0; k < PATHS; k++) { g.beginPath(); var o = k * (TRADES + 1); g.moveTo(X(0), Y(e[o])); for (s = 1; s <= TRADES; s++) g.lineTo(X(s), Y(e[o + s])); g.stroke(); }
     g.globalAlpha = 1; g.strokeStyle = acc; g.lineWidth = 2.25; g.beginPath(); g.moveTo(X(0), Y(state.med[0]));
     for (s = 1; s <= TRADES; s++) g.lineTo(X(s), Y(state.med[s])); g.stroke(); g.restore();
@@ -128,7 +128,6 @@
   Object.keys(inp).forEach(function (k) { inp[k].addEventListener("input", schedule); });
   kellyBtn.addEventListener("click", function () { if (state.kelly > 0) { inp.f.value = Math.round(state.kelly * 100); schedule(); } });
   window.addEventListener("resize", function () { if (state.sim) requestAnimationFrame(drawCurves); });
-  if (window.matchMedia) matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () { drawCurves(); });
   root.classList.add("live");
   run();
 })();
